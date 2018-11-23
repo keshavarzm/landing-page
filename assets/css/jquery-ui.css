@@ -1,0 +1,214 @@
+/*! jQuery UI - v1.12.1 - 2016-09-14
+* http://jqueryui.com
+* Includes: core.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, draggable.css, resizable.css, progressbar.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial%2CHelvetica%2Csans-serif&fsDefault=1em&fwDefault=normal&cornerRadius=3px&bgColorHeader=e9e9e9&bgTextureHeader=flat&borderColorHeader=dddddd&fcHeader=333333&iconColorHeader=444444&bgColorContent=ffffff&bgTextureContent=flat&borderColorContent=dddddd&fcContent=333333&iconColorContent=444444&bgColorDefault=f6f6f6&bgTextureDefault=flat&borderColorDefault=dbddde&fcDefault=454545&iconColorDefault=777777&bgColorHover=ededed&bgTextureHover=flat&borderColorHover=cccccc&fcHover=2b2b2b&iconColorHover=555555&bgColorActive=007fff&bgTextureActive=flat&borderColorActive=003eff&fcActive=ffffff&iconColorActive=ffffff&bgColorHighlight=fffa90&bgTextureHighlight=flat&borderColorHighlight=dad55e&fcHighlight=777620&iconColorHighlight=777620&bgColorError=fddfdf&bgTextureError=flat&borderColorError=f1a899&fcError=5f3f3f&iconColorError=cc0000&bgColorOverlay=aaaaaa&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=666666&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=5px&offsetTopShadow=0px&offsetLeftShadow=0px&cornerRadiusShadow=8px
+* Copyright jQuery Foundation and other contributors; Licensed MIT */
+
+
+#datepicker:after {
+	clear: both;
+	content: '';
+	display: block;
+}
+
+.ui-datepicker {
+	float: right;
+	font-family: 'Open Sans', sans-serif;
+	width: 294px;
+	padding: 0;
+	/* width: 17em;
+	padding: .2em .2em 0; */
+	display: none;
+	box-shadow: none;
+	/* box-shadow: 0 0 0 1px rgba(14, 41, 57, 0.12), 0 2px 5px rgba(14, 41, 57, 0.18), inset 0 -1px 2px rgba(14, 41, 57, 0); */
+
+}
+.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: 10px 0 12px;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 14px;
+	width: 28px;
+	height: 26px;
+}
+.ui-datepicker .ui-datepicker-prev {
+	left: 10px;
+}
+.ui-datepicker .ui-datepicker-next {
+	right: 10px;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+	position: relative;
+	text-indent: -9999px;
+	color: transparent;
+}
+.ui-datepicker .ui-datepicker-prev span:after,
+.ui-datepicker .ui-datepicker-next span:after {
+	border: 3px solid transparent;
+    border-radius: 2px;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: 12px;
+    margin-top: -.4375em;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform-origin: center;
+	width: 12px;
+	border-color: #E6E6E6;
+    right: 1.125em;
+    z-index: 4;
+}
+.ui-datepicker .ui-datepicker-prev span:after {
+	transform: rotate(-315deg);
+}
+.ui-datepicker .ui-datepicker-next span:after {
+	transform: rotate(-135deg);
+}
+
+.ui-datepicker .ui-datepicker-prev-hover span:after,
+.ui-datepicker .ui-datepicker-next-hover span:after {
+	border-color: #2866DB;
+}
+
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	color: #323C47;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 28px;
+	text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+    font-size: 1em;
+    padding: 1px 0 3px;
+    border: 1px solid #dbddde;
+    vertical-align: middle;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+	width: 60px;
+}
+.ui-datepicker-year {
+    padding-left: 5px;
+}
+.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin: 0 0 .4em;
+}
+.ui-datepicker th {
+	width: 42px;
+	height: 42px;
+	text-align: center;
+	/* font-weight: bold; */
+	border: 0;
+	color: #808080;
+	font-size: 11px;
+	letter-spacing: 0.92px;
+	line-height: 42px;
+	text-transform: uppercase;
+}
+.ui-datepicker td {
+	border: 0;
+	width: 42px;
+	height: 42px;
+	padding: 6px;
+	color: #999;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 1.17px;
+	text-align: center !important;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	line-height: 30px;
+}
+
+.ui-datepicker-other-month {
+	color: #E6E6E6 !important;
+}
+
+.ui-datepicker-today a.ui-state-highlight {
+	color: #ED3C61 !important;
+}
+
+.ui-datepicker td a {
+    height: 30px;
+    line-height: 30px;
+    border: none !important;
+	background-color: transparent !important;
+}
+
+.ui-datepicker td a.ui-state-hover,
+.ui-datepicker td a.ui-state-active {
+	height: 30px;
+	width: 30px;
+	border-radius: 4px;
+	background-color: #2866DB !important;
+    color: #fff;
+}
+
+.ui-datepicker td.ui-datepicker-today a.ui-state-active,
+.ui-datepicker td.ui-datepicker-today a.ui-state-hover {
+	color: #fff !important;
+	background-color:  #2866DB !important;
+}
+
+/* .ui-datepicker td.ui-datepicker-today a.ui-state-active.ui-state-hover {
+	background-color: transparent !important;
+} */
+
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1em;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1em;
+}
+
+.ui-widget.ui-widget-content {
+	border: none;
+}
+
+.ui-widget-content {
+	color: #999;
+}
+.ui-widget-content a {
+	color: #999;
+}
+.ui-widget-header {
+	/* border: 1px solid #dddddd; */
+	/* background: #e9e9e9; */
+	color: #999;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #999;
+}

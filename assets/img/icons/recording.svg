@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>camera on</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="landing-page" transform="translate(-992.000000, -1204.000000)" stroke="#ED3C61" stroke-width="2">
+            <g id="Text" transform="translate(84.000000, 1203.000000)">
+                <g id="Recording" transform="translate(906.000000, 2.000000)">
+                    <g id="camera-on" transform="translate(3.000000, 0.000000)">
+                        <path d="M17.9902,17.7982 L2.0002,17.7982 C0.8952,17.7982 0.0002,16.9022 0.0002,15.7982 L0.0002,2.0002 C0.0002,0.8962 0.8952,0.0002 2.0002,0.0002 L17.9902,0.0002 C19.0942,0.0002 19.9902,0.8962 19.9902,2.0002 L19.9902,15.7982 C19.9902,16.9022 19.0942,17.7982 17.9902,17.7982 Z" id="Stroke-1"></path>
+                        <polyline id="Stroke-3" points="20 6.099 25.671 2.931 25.671 14.853 19.99 11.679"></polyline>
+                        <path d="M10,8.8919 C10,10.2729 8.881,11.3919 7.5,11.3919 C6.119,11.3919 5,10.2729 5,8.8919 C5,7.5109 6.119,6.3919 7.5,6.3919 C8.881,6.3919 10,7.5109 10,8.8919 Z" id="Stroke-5"></path>
+                        <path d="M14.9951,8.8919 C14.9951,10.2729 13.8761,11.3919 12.4951,11.3919 C11.1141,11.3919 9.9951,10.2729 9.9951,8.8919 C9.9951,7.5109 11.1141,6.3919 12.4951,6.3919 C13.8761,6.3919 14.9951,7.5109 14.9951,8.8919 Z" id="Stroke-7"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

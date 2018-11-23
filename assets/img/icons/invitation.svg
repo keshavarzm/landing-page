@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="22px" viewBox="0 0 24 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>invite</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="landing-page" transform="translate(-533.000000, -1202.000000)" stroke="#ED3C61" stroke-width="2">
+            <g id="Text" transform="translate(84.000000, 1203.000000)">
+                <g id="Invite" transform="translate(448.000000, 0.000000)">
+                    <g id="invite" transform="translate(2.000000, 0.000000)">
+                        <path d="M14.566,5.9999 C14.566,9.3129 11.879,11.9999 8.566,11.9999 C5.253,11.9999 2.566,9.3129 2.566,5.9999 C2.566,2.6869 5.253,-0.0001 8.566,-0.0001 C11.879,-0.0001 14.566,2.6869 14.566,5.9999 Z" id="Stroke-1"></path>
+                        <path d="M-0.0004,19.3671 C-0.0004,19.3671 2.4436,15.8111 8.5546,15.8111" id="Stroke-3"></path>
+                        <path d="M17.108,19.3671 C17.108,19.3671 14.664,15.8111 8.554,15.8111" id="Stroke-5"></path>
+                        <path d="M-0.0004,19.3671 L17.1076,19.3671" id="Stroke-7"></path>
+                        <path d="M18.566,9.373 L18.566,15.373" id="Stroke-9"></path>
+                        <path d="M15.566,12.373 L21.566,12.373" id="Stroke-11"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

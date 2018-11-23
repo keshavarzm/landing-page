@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="21px" viewBox="0 0 24 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>share</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="landing-page" transform="translate(-991.000000, -2450.000000)" stroke="#ED3F62" stroke-width="2">
+            <g id="share" transform="translate(992.000000, 2451.000000)">
+                <polyline id="Stroke-1" points="17.8047 13.2648 17.8047 18.8948 -0.0003 18.8948 -0.0003 1.0898 12.9107 1.0898"></polyline>
+                <path d="M9.7569,10.0138 C9.7569,10.0138 11.0449,4.5968 19.6229,4.5968" id="Stroke-3"></path>
+                <path d="M21.5674,4.5968 L16.9694,-0.0002" id="Stroke-5"></path>
+                <path d="M21.5674,4.5968 L16.9694,9.1938" id="Stroke-7"></path>
+            </g>
+        </g>
+    </g>
+</svg>

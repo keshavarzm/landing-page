@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>FAQ</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<link type="text/css" rel="stylesheet" href="./css/landing.css">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="./js/landing.js"></script>
+	</head>
+	<body>
+		<!-- header -->
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner">
+			<!-- 현재 문서나 관련된 문서의 내비게이션 링크를 지정 -->
+			<nav id="lnb" role="navigation">
+				<div class="logo"><a href="/"><img src="./img/video/logo.svg" alt="roundee.io"></a></div>
+				<ul class="navList">
+					<li class="current"><a href="/">home</a></li>
+					<li><a href="#url">Schedule a meeting</a></li>
+					<li><a href="#url">Pricing</a></li>
+					<li><a href="#url">Slack integration</a></li>
+					<li><a href="#url">FAQ</a></li>
+				</ul>
+				<button id="navi_menu_open" onclick="fnToggleMenu();"><img src="./img/landing/menu_btn.svg" alt="all menu"></button>
+			</nav>
+			<nav id="m_lnb" role="navigation">
+				<div class="logo"><a href="/"><img src="./img/video/logo.svg" alt="roundee.io"></a></div>
+				<ul class="navList">
+					<li class="current"><a href="/">home</a></li>
+					<li><a href="#url">Schedule a meeting</a></li>
+					<li><a href="#url">Pricing</a></li>
+					<li><a href="#url">Slack integration</a></li>
+					<li><a href="#url">FAQ</a></li>
+				</ul>
+				<button id="navi_menu_close" onclick="fnToggleMenu()"><img src="./img/landing/menu_close.svg" alt="all menu"></button>
+			</nav>
+		</header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg bn">
+				<header class="header">
+					<h1 class="bl">FAQ</h1>
+					<p class="Hmsg">Haven’t you found your answer in the FAQ list? <br>Send us a message!</p>
+				</header>
+				<div class="faq">
+					<div class="faqList">
+						<ul>
+                            <li>
+                                <h2 class="tit">How do I invite others to join the call?</h2>
+                                <p class="con">
+                                    After you start a meeting call, you can invite up to 5 people to join the meeting
+                                    call by copying the link (URL) or by sending email to invitees directly from Roundee.io
+                                </p>
+                            </li>
+                            <li>
+                                <h2 class="tit">How do I share my screen?</h2>
+                                <p class="con">
+                                    <strong>Desktop</strong><br> <br>
+                                    To start sharing your screen, click the Share screen button in the bottom toolbar(Only one participant can share at a time).
+                                    <br>
+                                    Note that if you are using Chrome or Opera browser, you need to install an extension in your web browser
+                                    due to security reasons. Viewing the shared screen doesn’t require the users to install
+                                    the extension.<br><br>
+                                    <strong>Mobile</strong><br> <br>
+                                    Currently, you can’t start sharing your screen from a mobile device, but the users who
+                                    participate in the meeting call on a mobile device can view the screen shared from a desktop device.
+                                </p>
+                            </li>
+                            <li>
+                                <h2 class="tit">How to download my recording?</h2>
+                                <p class="con">A few minutes after the meeting call ends, you will receive a web page link to for your cloud recoding via email.
+                                  You can download your recording file from the cloud recording page which is available for 2 weeks. </p>
+                            </li>
+                            <li>
+                                <h2 class="tit">Who can record a meeting?</h2>
+                                <p class="con">Only the host of the meeting call can record a meeting.</p>
+                            </li>
+                            <li>
+                                <h2 class="tit">How long can I record a meeting?</h2>
+                                <p class="con">You can record up to 1 hour per meeting at the moment.</p>
+                            </li>
+                            <li>
+                                <h2 class="tit">How can I share my recording?</h2>
+                                <p class="con">A few minutes after the meeting call ends, you will receive a web page link for your cloud recoding via email.
+                                    You can copy and share the link (URL) of the cloud recording page, which is available for 2 weeks.</p>
+                            </li>
+                            <li>
+                                <h2 class="tit" id="supportbrow">Which web browsers does roundee.io support?</h2>
+                                <p class="con">Roundee.io works on Google Chrome (recommended), Safari (above 11 version), Firefox, and Opera browsers.<br> <br>
+                                    <strong>Desktop browser:</strong><br> <br>
+                                    Google Chrome (recommended), Safari (above 11 version), Firefox, and Opera.<br> <br>
+                                    <strong>Android OS browser:</strong><br> <br>
+                                    Google Chrome for Android<br> <br>
+                                    <strong>iOS browser (iPhone, iPad):</strong><br> <br>
+                                    Safari (above 11 version)<br> <br>
+                                    <strong>Not supported:</strong><br> <br>
+                                    Microsoft Internet Explorer, Microsoft Edge</p>
+                            </li>
+                            <li>
+                                <h2 class="tit">How secure is my connection?</h2>
+                                <p class="con">Roundee.io encrypts both signal and media content.  Roundee.io uses HTTPS(SSL/TLS) to
+                                  encrypt data in transaction between a user client and servers. If you are using a firewall, please
+                                  open access for outgoing traffic via TCP and UDP to port 443 on hosts on the domain roundee.io.</p>
+                            </li>
+                            <li>
+                                <h2 class="tit">How do I join a meeting as a guest?</h2>
+                                <p class="con">To join a meeting, you only need to have the link (URL) of the meeting call from the
+                                  host and enter Email ID once. No installation is required.</p>
+                            </li>
+                            <!-- <li>
+                                <h2 class="tit">Can I transfer a conference call that I am hosting to someone else?</h2>
+                                <p class="con">No, transferring your conference calls is not available at the moment.</p>
+                            </li> -->
+                            <li>
+                                <h2 class="tit">How do I control the meeting environment?</h2>
+                                <p class="con">First, you can optimize your audio and video quality when you enter the meeting
+                                  room and during the meeting at the settings. Second, you can turn off your microphone and camera
+                                  during the meeting. Third, a host of the meeting can turn off the microphone and camera of the guests during the meeting.</p>
+                            </li>
+                            <li>
+                                <h2 class="tit">What are the minimum network speeds requirements to use roundee.io?</h2>
+                                <p class="con">
+                                    For a full conversation including 6 participants, the recommended network speeds are 1 Mbps for outbound and 3.2 Mbps for inbound.
+                                    For a one on one conversation, the recommended network speeds are 1.0 Mbps outbound and 1.0 Mbps inbound <br> <br>
+                                    You can adjust your audio and video quality when you enter the meeting room and during the meeting at the
+                                    settings depending on network environment.
+                                </p>
+                            </li>
+                        </ul>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer">
+			<div class="homeBtn"><button>Try roundee</button></div>
+			<div class="first">
+				<img src="./img/video/logo.svg" alt="roundee.io">
+				<p class="mdCon">Roundee is a one-click video call in your window browser on desktop and mobile devices (PC, Mac, Android, iOS)</p>
+			</div>
+			<!-- footNav -->
+			<nav class="footNav" role="navigation">
+				<div class="mdNv">
+					<h5>About us</h5>
+					<ul class="ftNavList">
+						<li><a href="#url">Pricing</a></li>
+						<li><a href="#url">Give feedback</a></li>
+						<li><a href="#url">Blog</a></li>
+					</ul>
+				</div>
+				<div class="mdNv">
+					<h5>Need help?</h5>
+					<ul class="ftNavList">
+						<li><a href="#url">FAQ</a></li>
+						<li><a href="#url">contact@roundee.io</a></li>
+					</ul>
+				</div>
+				<div class="mdNv">
+					<h5>Legal</h5>
+					<ul class="ftNavList">
+						<li><a href="#url">Terms of use</a></li>
+						<li><a href="#url">Privacy Policy</a></li>
+					</ul>
+				</div>
+				<div class="mdNv icon">
+					<h5>Follow us</h5>
+					<ul class="ftNavList">
+						<li><a href="https://www.facebook.com/roundeeio/" target="_blank" title="facebook"><img src="./img/landing/icon_facebook.svg" alt="facebook"></a></li>
+						<li><a href="#url"><img src="./img/landing/icon_instargram.svg" alt="instargram"></a></li>
+						<li><a href="https://www.linkedin.com/company/roundee.io" target="_blank" title="linkedin"><img src="./img/landing/icon_in.svg" alt="in"></a></li>
+						<li><a href="https://twitter.com/roundeeio" target="_blank" title="twitter"><img src="./img/landing/icon_twitter.svg" alt="twitter"></a></li>
+					</ul>
+				</div>
+			</nav>
+			<!-- footNav:end -->
+			<div class="copy">Copyright Roundee.io 2019</div>
+		</footer>
+		<!-- footer:end -->
+	</body>
+</html>
