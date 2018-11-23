@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Roundee | Browser-Based Video Call</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://roundee.io/">
+		<meta property="og:title" content="Roundee | Browser-Based Video Call">
+		<meta property="og:description" content="In just seconds, host free video calls with your team and stay productive. No download, it simply works on your web browser.">
+		<meta property="og:image" content="https://roundee.io/asset_new/img/meta-og-facebook.jpg">
+		<meta name="description" content="In just seconds, host free video calls with your team and stay productive. No download, it simply works on your web browser.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+			</script>
+
+			<script async src="https://www.googletagmanager.com/gtag/js?id=AW-781194399"></script>
+			<script>
+  			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  					gtag('js', new Date());
+  					gtag('config', 'AW-781194399');
+			</script>
+
+	</head>
+	<body>
+		<!-- Header -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<!-- section1 -->
+			<section id="section1">
+				<header class="roundeeHd">
+					<h1>Meetings that matter</h1>
+					<p class="secCon">In just seconds, you can host free video calls with your team and stay productive. No download needed, it opens right in your web browser.</p>
+					<!-- no surport browser -->
+					<div class="ns" style="display:none">
+						<p id='browser_nm'>This browser(IE) doesn’t support video conversation. To use roundee please try:</p>
+						<p id='browser_type'><a href="https://www.google.com/chrome/">Chrome</a>, <a href="https://support.apple.com/downloads/safari">Safari</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> or <a href="https://www.opera.com/ko/download">Opera</a> browsers.</p>
+					</div>
+					<!-- no surport browser:end -->
+							<div class="secForm" id="startmeetingarea">
+								<form onsubmit="return startmeeting_submit();">
+									<input type="email" value="" id="YE" placeholder="Your email (no sign-up needed)">
+									<input type="submit" style='display:none'>
+								</form>
+									<button onclick='startmeeting()'>Host Meeting now</button>
+									<p class="emsg" style='display:none'>Please check your email address and try again.</p>
+									<p><span>or</span> <button class="link" onclick='schedulebtn()'>schedule a meeting for later</button></p>
+							</div>
+
+				</header>
+				<div class="topImg"><img src="/asset_new/img/landing/start_graphic_meeting_cat.png" alt=""></div>
+			</section>
+			<!-- section1:end -->
+			<!-- section2 -->
+			<section id="section2" class="curved1">
+
+				<div class="tBtn" id="tBtn">
+					<button class="current">Video Room</button>
+					<button>Recording</button>
+					<button>Timestamped Notes</button>
+					<button>Screen Share</button>
+					<button>Invitation</button>
+				</div>
+				<div class="secCon">
+					<p id="hCon1" data-id="1" data-name="Video Room"><img src="/asset_new/img/landing/section2_img1.png" alt=""></p>
+					<p id="hCon2" data-id="2" data-name="Recording"><img src="/asset_new/img/landing/section2_img2.png" alt=""></p>
+					<p id="hCon3" data-id="3" data-name="Timestamped Notes">
+						<img src="/asset_new/img/landing/section2_img3.png" alt="">
+						<span class="ps">Create timestamped notes to easily review your recording.</span>
+					</p>
+					<p id="hCon4" data-id="4" data-name="Screen Share"><img src="/asset_new/img/landing/section2_img4.png" alt=""></p>
+					<p id="hCon5" data-id="5" data-name="Invitation">
+						<img src="/asset_new/img/landing/section2_img5.png" alt="">
+						<span class="ps1">Your guests can simply join in one click.</span>
+						<span class="ps2">Share the web page link to invite up to 6 people.</span>
+					</p>
+				</div>
+				<div class="flexRowItem">
+					<div class="first">
+						<img src="/asset_new/img/landing/web_browser_base.svg" alt="">
+						<h3>Web Browser Base</h3>
+						<p class="hCon">Simply start a call from your PC or mobile device. No installation or plug-in required.</p>
+						<p class="hCon">Supported browsers:<a href="/faq#browser"><img src="/asset_new/img/landing/icon_browsers.svg" alt="chrome , safari , firefox , opera"></a></p>
+					</div>
+					<div class="mid">
+						<img src="/asset_new/img/landing/easy_invitation.svg" alt="">
+						<h3>Easy invitation</h3>
+						<p class="hCon">Invite team members and clients by email, Slack or with a link.</p>
+						<p class="hCon">Up to 6 people can join each meeting.</p>
+					</div>
+					<div class="last">
+						<img src="/asset_new/img/landing/recording.svg" alt="">
+						<h3>Hassle-free recording</h3>
+						<p class="hCon">Stay engaged in your meetings and enjoy the convenience of video recording.</p>
+						<p class="hCon">Limit of 1 hour recording per meeting. Only host can record and make timestamped notes.</p>
+					</div>
+				</div>
+				<script src="/asset_new/js/swiper.min.js"></script>
+				<script>
+					$(document).ready(function(){
+						var swiper = new Swiper('.swiper-container', {
+						  autoplay :{
+							delay: 4000,
+						  },
+						  pagination: {
+							el: '.swiper-pagination',
+							clickable: true,
+						  },
+						});
+						});
+				</script>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="first">
+								<img src="/asset_new/img/landing/web_browser_base.svg" alt="">
+								<h3>Web Browser Base</h3>
+								<p class="hCon">Simply start a call from your PC or mobile device. No installation or plug-in required.</p>
+								<p class="hCon">Supported browsers:<a href="/faq#browser"><img src="/asset_new/img/landing/icon_browsers.svg" alt="chrome , safari , firefox , opera"></a></p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="mid">
+								<img src="/asset_new/img/landing/easy_invitation.svg" alt="">
+								<h3>Easy invitation</h3>
+								<p class="hCon">Invite team members and clients by email, Slack or with a link.</p>
+								<p class="hCon">Up to 6 people can join each meeting.</p>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="last">
+								<img src="/asset_new/img/landing/recording.svg" alt="">
+								<h3>Hassle-free recording</h3>
+								<p class="hCon">Stay engaged in your meetings and enjoy the convenience of video recording.</p>
+								<p class="hCon">Limit of 1 hour recording per meeting. Only host can record and make timestamped notes.</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+				<div class="btn"><a href="/pricing#Features" class="button">View all Features</a></div>
+			</section>
+			<!-- section2:end -->
+			<!-- section3 -->
+			<section id="section3" class="curved_top">
+				<h2>Full Meeting Recordings</h2>
+				<p class="hCon">You'll receive a streaming link right after the meeting, including the chat conversations and all your timestamped notes.</p>
+				<p class="hPhoto"><img src="/asset_new/img/landing/full_meeting_recordings.jpg" alt=""></p>
+
+				<div class="flexRowItem pc_view">
+					<div class="Item">
+						<h3>Email Delivery</h3>
+						<p class="hCon">Once your meeting ends, roundee will automatically send a link to the host’s email address.</p>
+					</div>
+					<div class="Item">
+						<h3>Cloud Storage</h3>
+						<p class="hCon">Your video recordings will be available for streaming on our secure and dedicated servers for <strong>2 weeks</strong> with the Free Plan.</p>
+					</div>
+					<div class="Item">
+						<h3>Download & Share</h3>
+						<p class="hCon">Download your video recordings in <strong>.mp4 or .aac (audio) for free.</strong> Share the meeting minutes with the page link.</p>
+					</div>
+				</div>
+			</section>
+			<!-- section3:end -->
+			<!-- section4 -->
+			<section id="section4" class="curved_bottom">
+				<h2>Slack integration</h2>
+				<p class="hCon">Starting a roundee.io video conference with Slack is just an easy click away.</p>
+				<div class="flexRowItem">
+					<div class="Item2"><img src="/asset_new/img/landing/slack_logo.png" alt="slack"></div>
+					<div class="Item2">
+						<p><strong>/</strong> roundee</p>
+						<p>Simply use the slash command /roundee in your Slack channel or direct message to start a video meeting.
+						<a href="/slack-integration">Learn More</a></p>
+						<p class="txt_right"><a href="https://slack.com/signin?redir=%2Foauth%3Fclient_id%3D28848962503.28843931126%26redirect_uri%3D%26state%3D%26scope%3Dcommands%252Cchat%253Awrite%253Abot%252Cbot%252Cusers%253Aread%252Cusers%253Aread.email%26team%3D%26install_redirect%3D%26single_channel%3D0" target="_blank" title="add to slack" class="button">Add to slack</a></p>
+					</div>
+				</div>
+			</section>
+			<!-- section4:end -->
+			<!-- section5 -->
+			<section id="section5" class="curved_top">
+				<div class="fed">
+					<h2 id="Feedback">Any Feedback?</h2>
+					<p class="hCon">What features would you like to see in the future? <br>What bothers you most in video meetings?</p>
+					<p class="secForm"><textarea spellcheck="true" id="feedback_txt" class="fedTxt"></textarea></p>
+					<div class="btn">
+						<p class="Smsg">
+							<span class="ms2" style="display:none;">Please enter a messsage.</span>
+							<span class="ms3" style="display:none;">Thank you! Your message has been sent successfully.</span>
+						</p>
+						<button id="fSend" onclick="send_feedback()">Send</button>
+					</div>
+				</div>
+				<div class="fedImg"><img src="/asset_new/img/landing/feedback.png" alt=""></div>
+			</section>
+			<!-- section5:end -->
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+	</body>
+</html>

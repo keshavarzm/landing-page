@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Slack Integrated | Roundee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+		
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+			</script>
+	</head>
+	<body>
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg type4">
+				<header class="header">
+					<h1 class="bl1">Slack Integration Successful!</h1>
+					<p class="Hmsg">You successfully integrated Roundee app into your Slack team. </p>
+				</header>
+				<div class="subBox">
+					<div class="subBoxin">
+						<div class="slack_Item3">
+							<h3><strong>/</strong> roundee</h3>
+							<p>Start a roundee.io video meeting call with the /roundee slash command.</p>
+						</div>
+						<div class="slack_Item3 gd"><img src="/asset_new/img/landing/slack_img.gif" alt=""></div>
+					</div>
+				</div>
+			</section>
+			<section class="flexColumnItem">
+				<h3 class="bl">Get your video recording on Slack</h3>
+				<p class="Hmsg">Just after your meeting ends, a link with your recorded file will be automatically posted <strong>privately</strong> on your Slack App.</p>
+				<p class="img"><img src="/asset_new/img/landing/video_recording_slack.png" alt=""></p>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+	</body>
+</html>

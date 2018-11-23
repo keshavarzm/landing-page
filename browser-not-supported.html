@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Browser not supported | Roundee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+		</script>
+	</head>
+	<body>
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg type1 bg200">
+				<header class="header">
+					<h1 class="bl">Browser not supported</h1>
+					<p class="Hmsg">Sorry, this browser is not supported.</p>
+				</header>
+				<div class="subBox">
+
+					<div class="subBoxin">
+						<h2>Supported browsers:</h2>
+						<!-- pc-explore -->
+						<p class="img" id='pc' style="display:none">
+							<a href="https://www.google.com/chrome/" target="_blank" title=""><img src="/asset_new/img/landing/icon_chrome.svg" alt="chrome"></a>
+							<a href="https://support.apple.com/downloads/safari" target="_blank" title=""><img src="/asset_new/img/landing/icon_safari.svg" alt="safari"></a>
+							<a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" title=""><img src="/asset_new/img/landing/icon_firefox.svg" alt="firefox"></a>
+							<a href="https://www.opera.com/ko/download" target="_blank" title=""><img src="/asset_new/img/landing/icon_opera.svg" alt="opera"></a>
+						</p>
+						<!-- mobile android -->
+						<p class="img" style="display:none" id='mob_andriod'>
+							<a href="https://www.google.com/chrome/"><img src="/asset_new/img/landing/icon_chrome.svg" alt="chrome"></a>
+						</p>
+						<!-- mobile ios -->
+						<p class="img" style="display:none" id='mob_ios'>
+							<a href="https://www.mozilla.org/en-US/firefox/new/"><img src="/asset_new/img/landing/icon_safari.svg" alt="safari"></a>
+						</p>
+						<p class="txt">Please copy the URL and paste it on a supported browser:</p>
+						<input type="text" value="" readonly="readonly" id="copyLink" class="i_txt">
+						<p class="cpc" style="display:none;">Link copied to clipboard!</p>
+						<p class="btn"><button onclick="CopyToClipboard_inputtext('copyLink')">Copy Link</button></p>
+					</div>
+          <script>
+						$(document).ready(function(){
+							if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+									//mobile
+									if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {  //IOS
+										$('#mob_ios').show();
+									} else {   //Andriod
+										$('#mob_andriod').show();
+									}
+							} else {
+								 //PC IE
+									$('#pc').show();
+							}
+							var url =  getQueryString('urlkey');
+							$('#copyLink').val(url);
+						});
+					</script>
+				</div>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+	</body>
+</html>

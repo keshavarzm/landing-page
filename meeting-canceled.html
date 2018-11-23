@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Meeting cancelled! | Roundee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+		</script>
+	</head>
+	<body>
+		<!-- header -->
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg pd">
+				<header class="header">
+					<h1>Meeting cancelled!</h1>
+				</header>
+				<div class="subBox ce">
+					<div class="subBoxin">
+						<h2><img src="/asset_new/img/landing/icon_cancel.svg" alt=""></h2>
+						<p class="Hcon">Your meeting has been cancelled.</p>
+						<div class="bottom"><a href="/">Back Home</a></div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+	</body>
+</html>

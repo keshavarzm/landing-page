@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Cancel meeting | Roundee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+		</script>
+	</head>
+	<body id='bodycancel' style='display:none'>
+		<!-- header -->
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg pd">
+				<header class="header">
+					<h1>Cancel meeting</h1>
+				</header>
+				<div class="subBox">
+					<div class="subBoxin cc">
+						<h2><img src="/asset_new/img/landing/icon_cancel.svg" alt=""></h2>
+						<p class="Hcon">You requested to cancel the following meeting:</p>
+						<div class="bdBox">
+							<p id='conf_title'></p>
+							<p>
+								 <span id='conf_dt'></span> <br>
+								 <span id='conf_time'></span>
+							</p>
+							<!-- <p id='conf_dt'>Thursday October 11, 2018<br>12:00 to 12:30 Asia/Seoul (30 min)</p> -->
+							<p>Join from PC, Mac, iOS or Android:</p>
+							<p><a href="" id="meeting_link"></a></p>
+							<script>
+								$(document).ready(function(){
+									var  url = window.location.href;
+									$('#meeting_link').text(url).attr('href',url);
+								});
+							</script>
+						</div>
+						<div class="bottom">
+							<div class="rg">
+								<a href="/">Home</a>
+								<button class="rd" onclick='cancel_meeting()'>Yes, cancel meeting</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+
+    <script src="https://roundee.io/assets/js/moment.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone.min.js"></script>
+		<script>
+        $(document).ready(function(){
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+              if (xmlhttp.status == 200) {
+                var resp = xmlhttp.response;
+                  console.log(resp);
+									try {
+		                  var data = JSON.parse(resp);
+		                  if(data.state=='end') {
+												document.getElementById("bodycancel").style.display = "none";
+		                    window.location.replace("/meeting-canceled.html");
+		                    return;
+		                  }
+
+		                  if(data.state=='progress') {
+		                    document.getElementById("bodycancel").style.display = "none";
+		                    window.location.replace("/noteditcancel.html");
+		                    return;
+		                  }
+
+		                  document.getElementById("bodycancel").style.display = "block";
+		                  document.getElementById('conf_title').innerHTML= data.name;
+		                  var meta = data['.meta'];
+
+		                  var linkurl = "https://roundee.io/schedule/" + meta['!key'];
+		                  document.getElementById('meeting_link').innerHTML = "<a href='" + linkurl +"' class='meetinglink' >" + linkurl +  "</a>"
+
+		                  var starttime= data.selected_time;
+		                  var st_count = starttime.indexOf('T')+1;
+
+		                  var conf_t =  starttime.substring(st_count,st_count +5);
+
+		                  var am_pm = moment(starttime).format('A');
+		                  document.getElementById('conf_time').innerHTML = starttime.substring(st_count,st_count +5) + ' ' + am_pm +' (' + data.time_zone +')';
+
+		                  var weekName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+		                  var monthName = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		                  var dt = new Date(starttime.substring(0,st_count-1));
+		                  var returnvalue = moment(starttime).format('dddd')+", "+moment(starttime).format('MMMM') +" "+moment(starttime).format('DD') + " " + moment(starttime).format('YYYY');
+
+		                  document.getElementById('conf_dt').innerHTML = returnvalue;
+									} catch(err) {
+											//window.location.replace("https://askee.io/");
+									}
+
+              } else if (xmlhttp.status == 400) {
+                 console.log('conference id not exists: 400');
+                 window.location.replace("/404.html");
+              } else {
+                console.log('conference id not exists: not done');
+                window.location.replace("/404.html");
+              }
+            }
+          };
+
+          xmlhttp.open("POST", "https://www.roundee.io/landing/search_schedule", true);
+          xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+          xmlhttp.send('room_id=' + getQueryString('room_id') + '&owner=' +  getQueryString('id'));
+        });
+    </script>
+
+	</body>
+</html>

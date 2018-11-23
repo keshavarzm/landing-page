@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Slack Integration | Roundee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+		
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+			</script>
+	</head>
+	<body>
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg type3">
+				<header class="header">
+					<h1 class="bl">Integrate roundee on slack</h1>
+					<p class="Hmsg">Quickly start a video conference call from your <br>Slack Channel or Direct Message.</p>
+					<p class="link">
+						<a href="https://slack.com/signin?redir=%2Foauth%3Fclient_id%3D28848962503.28843931126%26redirect_uri%3D%26state%3D%26scope%3Dcommands%252Cchat%253Awrite%253Abot%252Cbot%252Cusers%253Aread%252Cusers%253Aread.email%26team%3D%26install_redirect%3D%26single_channel%3D0" target="_blank" title="blank Link" class="button">Add to Slack</a>
+						<span>Type /roundee to start a call on Slack</span>
+					</p>
+				</header>
+				<div class="subBox">
+					<div class="subBoxin">
+						<h2 class="fs24">How to integrate roundee on Slack</h2>
+						<p class="step"><span>Step1</span>Click "Add to slack" Button</p>
+						<p class="step"><span>Step 2</span>Select Your Slack team</p>
+						<p class="step"><span>Step 3</span>Authorize roundee.io</p>
+						<div class="last">Done! 🎉</div>
+					</div>
+					<div class="flexRowItem">
+						<div class="Item3">
+							<h3><strong>/</strong> roundee</h3>
+							<p>Start a roundee.io video meeting call with the /roundee slash command.</p>
+						</div>
+						<div class="Item3 gd"><img src="/asset_new/img/landing/slack_img.gif" alt=""></div>
+					</div>
+				</div>
+			</section>
+			<section class="flexColumnItem">
+				<h3 class="bl">Get your video recording on Slack</h3>
+				<p class="Hmsg">Just after your meeting ends, a link with your recorded file will be automatically posted <strong>privately</strong> on your Slack App.</p>
+				<p class="img"><img src="/asset_new/img/landing/video_recording_slack.png" alt=""></p>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+	</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Conference call created! | Roundee</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width , initial-scale=1.0">
+		<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+		<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+		<!-- j-query 컴포넌트 임포트 -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+		<script src="/asset_new/js/landing.js"></script>
+		<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+		<script>
+			$(document).ready(function(){
+				$('#header').load('/header');
+				$('#footer').load('/footer');
+			});
+		</script>
+	</head>
+	<body>
+		<!-- header -->
+		<!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+		<header id="header" role="banner"></header>
+		<!-- header:end -->
+		<main id="main" role="main">
+			<section class="subBg">
+				<header class="header">
+					<h1>Schedule a meeting</h1>
+				</header>
+				<div class="subBox">
+					<div class="subBoxin">
+						<h2 class="fs24 gn">Step 2/2<span>Conference call created</span></h2>
+						<p class="icon"><img src="/asset_new/img/landing/icon_check.svg" alt=""></p>
+						<p class="Hcon">Done! The meeting information has been sent to your email.<br>Send the link to participants.</p>
+						<div class="unsupport" style="display:none">
+							Keep in mind to use one of the following browsers once you <br>start hosting a meeting.
+							<!-- pc-explore -->
+							<p class="img" style="display:none" id='pc'>
+								<a href="https://www.google.com/chrome/" target="_blank" title=""><img src="/asset_new/img/landing/icon_chrome.svg" alt="chrome"></a>
+								<a href="https://support.apple.com/downloads/safari" target="_blank" title=""><img src="/asset_new/img/landing/icon_safari.svg" alt="safari"></a>
+								<a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" title=""><img src="/asset_new/img/landing/icon_firefox.svg" alt="firefox"></a>
+								<a href="https://www.opera.com/ko/download" target="_blank" title=""><img src="/asset_new/img/landing/icon_opera.svg" alt="opera"></a>
+							</p>
+							<!-- mobile android -->
+							<p class="img" style="display:none" id='mob_android'>
+								<a href="https://www.google.com/chrome/"><img src="/asset_new/img/landing/icon_chrome.svg" alt="chrome"></a>
+							</p>
+							<!-- mobile ios -->
+							<p class="img" style="display:none" id='mob_ios'>
+								<a href="https://www.mozilla.org/en-US/firefox/new/"><img src="/asset_new/img/landing/icon_safari.svg" alt="safari"></a>
+							</p>
+						</div>
+						<div class="bdBox" id='divcopy'>
+							<div id='loaded_item' style='display:none'>
+								<p class="first" id='meeting_title'></p>
+								<p id='meetingtxt'></p>
+								<p>Join from PC, Mac, iOS or Android:</p>
+								<p><a href="" id="copyLink"></a></p>
+							</div>
+							<div id='loading_bar' class="loading-bar">
+									<div class="loading-txt">loading</div>
+									<div class="loading-bar-con">
+									<span class="b1"></span>
+									<span class="b2"></span>
+									<span class="b3"></span>
+									<span class="b4"></span>
+									<span class="b5"></span>
+									<span class="b6"></span>
+									</div>
+							</div>
+							<script>
+								$(document).ready(function(){
+
+									if(!sessionStorage.getItem('conf_id')) {
+										window.location.replace("/");
+										return;
+									}
+									$("#meeting_title").html(sessionStorage.getItem('conf_title'));
+
+									$('#loading_bar').hide();
+									$('#loaded_item').show();
+
+									$("#meetingtxt").html(
+											sessionStorage.getItem('select_dt')
+					           + '<br>'
+					           + sessionStorage.getItem('time') + ' to '
+										 + sessionStorage.getItem('end_date') + ' ' + sessionStorage.getItem('time_zone').substring(12)
+										 +  ' (' + sessionStorage.getItem('dur') + ' min)'
+								 );
+
+									var linkurl = "https://roundee.io/schedule/" + sessionStorage.getItem('conf_id');
+									$('#copyLink').text(linkurl).attr('href',linkurl);
+
+									var agent = navigator.userAgent.toLowerCase();
+
+									if(navigator.userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+							    		//mobile
+											if(navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+													if(navigator.userAgent.match('CriOS') || navigator.userAgent.match('FxiOS')) {
+														$('.unsupport').show();
+														$('#mob_ios').show();
+													}
+											} else if(navigator.userAgent.match(/Android/i)) {
+									          if(navigator.userAgent.indexOf('Chrome') <= -1) {
+															$('.unsupport').show();
+															$('#mob_android').show();
+
+									          } else if(navigator.userAgent.indexOf('OPR') > -1) {
+															$('.unsupport').show();
+															$('#mob_android').show();
+									          }
+									    }
+							    } else {
+										 //PC
+										if((!!window.MSInputMethodContext && !!document.documentMode) || (navigator.userAgent.indexOf('MSIE') != -1)) {  //IE
+											$('.unsupport').show();
+											$('#pc').show();
+										}
+
+										else if (agent.indexOf("chrome") != -1) {   //Edge
+											if(agent.indexOf("edge") !== -1){
+									       $('.unsupport').show();
+												 $('#pc').show();
+									    }
+										}
+									}
+
+								});
+							</script>
+						</div>
+						<div class="bottom">
+							<div class="copyMsg cpc"><img src="/asset_new/img/landing/icon_check.svg" alt=""> Link copied to clipboard. Open your calendar and paste the information manually.</div>
+							<div class="lf">Note: roundee supports 6 people maximum <br>You can close this page.</div>
+							<div class="rg"><button onclick="CopyToClipboard('divcopy')">Copy invitation</button></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- footer -->
+		<footer id="footer"></footer>
+		<!-- footer:end -->
+	</body>
+</html>

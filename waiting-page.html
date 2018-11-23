@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roundee | Browser-Based Video Call</title>
+    <link href="https://roundee.io/assets/css/custom.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width , initial-scale=1.0">
+	<meta name="description" content="Roundee is a no installation, free video conference calls in your web browser. We help you to
+    create a video record for all your important meeting and share it instantly with your team or
+    clients. Quickly connect from PC or Mobile with up to 6 people and enjoy the convenience of
+    video recording.">
+	<meta name="keywords" content="Video conference call, video conferencing, webrtc video call, browser-based video call, record video call.">
+	<!-- j-query 컴포넌트 임포트 -->
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script src="/asset_new/js/landing.js"></script>
+	<link type="text/css" rel="stylesheet" href="/asset_new/css/landing.css">
+
+	<script>
+		$(document).ready(function(){
+			$('#header').load('/header');
+			$('#footer').load('/footer');
+		});
+		</script>
+</head>
+<body id='bodywaiting' style="display:none;">
+    <!--특정 문서가 아닌 전체 사이트 영역을 지정 , 로고나 해더 -->
+	<header id="header" role="banner">
+		<!-- 현재 문서나 관련된 문서의 내비게이션 링크를 지정 -->
+		<nav id="lnb" role="navigation">
+			<div class="logo"><a href="./index.html"><img src="/asset_new/img/landing/logo.svg" alt="roundee.io"></a></div>
+		</nav>
+	</header>
+	<!-- header:end -->
+	<main>
+		<section class="subBg type3 bg40">
+			<header class="header">
+			<h1 id='conf_title'></h1>
+
+				<div class="date">
+					<p class="Hmsg">
+						<span id='start_dt'></span> <span id='start_time'> </span> <br>
+						Duration: about <span id='duration'></span> minutes
+					</p>
+					<p class="Hmsg mg_t20">Meeting starts in:</p>
+				</div>
+				<div class="time-block">
+					<div class="block">
+						<strong id='days'></strong><span>DAYS</span>
+					</div>
+					<div class="block">
+						<strong id='hours'></strong><span>HOURS</span>
+					</div>
+					<div class="block">
+						<strong id='mins'></strong><span>MINUTES</span>
+					</div>
+					<div class="block">
+						<strong id='milsec'></strong><span>SECONDS</span>
+					</div>
+				</div>
+				<p class="Hmsg">
+					The meeting room will open <strong>15 minutes</strong> before the call starts.
+				</p>
+				<p class="Hmsg mg_t20 it">ahead of schedule? <a href="/"><u>start a new meeting room now</u></a></p>
+			</header>
+			<div class="subBox">
+			<div class="subBoxin">
+				<h2 class="fs24 gn">SYSTEM REQUIREMENTS</h2>
+				<div class="f-wrap" id='pc_all' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29px" height="29px" viewBox="0 0 29 29" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<g id="waiting-page-mobile-(1)" transform="translate(-28.000000, -657.000000)" stroke="#01BCB6" stroke-width="2.5">
+											<g id="Group-5" transform="translate(29.000000, 659.000000)">
+												<g id="Group-6">
+													<g id="check" transform="translate(1.000000, 0.000000)">
+														<polyline id="Stroke-1" points="4.16666667 12.8557631 9.39454475 17.5 20 8.33333333"/>
+														<path d="M25,12.5 C25,19.4038462 19.4038462,25 12.5,25 C5.59615385,25 0,19.4038462 0,12.5 C0,5.59615385 5.59615385,0 12.5,0 C19.4038462,0 25,5.59615385 25,12.5 Z" id="Stroke-2"/>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i>supported</i>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29px" height="29px" viewBox="0 0 29 29" version="1.1">
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+									<g id="waiting-page-mobile-(1)" transform="translate(-28.000000, -657.000000)" stroke="#01BCB6" stroke-width="2.5">
+										<g id="Group-5" transform="translate(29.000000, 659.000000)">
+											<g id="Group-6">
+												<g id="check" transform="translate(1.000000, 0.000000)">
+													<polyline id="Stroke-1" points="4.16666667 12.8557631 9.39454475 17.5 20 8.33333333"/>
+													<path d="M25,12.5 C25,19.4038462 19.4038462,25 12.5,25 C5.59615385,25 0,19.4038462 0,12.5 C0,5.59615385 5.59615385,0 12.5,0 C19.4038462,0 25,5.59615385 25,12.5 Z" id="Stroke-2"/>
+												</g>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>supported</i>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="f-wrap" id='pc_safari' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29px" height="29px" viewBox="0 0 29 29" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<g id="waiting-page-mobile-(1)" transform="translate(-28.000000, -657.000000)" stroke="#01BCB6" stroke-width="2.5">
+											<g id="Group-5" transform="translate(29.000000, 659.000000)">
+												<g id="Group-6">
+													<g id="check" transform="translate(1.000000, 0.000000)">
+														<polyline id="Stroke-1" points="4.16666667 12.8557631 9.39454475 17.5 20 8.33333333"/>
+														<path d="M25,12.5 C25,19.4038462 19.4038462,25 12.5,25 C5.59615385,25 0,19.4038462 0,12.5 C0,5.59615385 5.59615385,0 12.5,0 C19.4038462,0 25,5.59615385 25,12.5 Z" id="Stroke-2"/>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i>supported</i>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="not-support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+								<title></title>
+								<desc></desc>
+								<defs/>
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+										<g id="Group-7" transform="translate(29.000000, 758.000000)">
+											<g id="warning" transform="translate(2.000000, 0.000000)">
+												<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+												<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+												<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>not supported (view only)</i>
+							<p>
+								To use roundee.io screen share feature, please use Chrome, Firefox or Opera browsers.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Example of error message for desktop user using IE. -->
+				<div class="f-wrap" id='pc_ie' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="not-support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+											<g id="Group-7" transform="translate(29.000000, 758.000000)">
+												<g id="warning" transform="translate(2.000000, 0.000000)">
+													<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+													<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+													<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i> not supported</i>
+								<p>
+									To use <u>roundee.io</u> please open this page with Chrome, Firefox or Opera browsers.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="not-support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+										<g id="Group-7" transform="translate(29.000000, 758.000000)">
+											<g id="warning" transform="translate(2.000000, 0.000000)">
+												<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+												<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+												<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>not supported (view only)</i>
+							<p>
+								To use <u>roundee.io</u> screen share feature, please use Chrome, Firefox or Opera browsers.
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Example of error message for iOS user using chrome or firefox. -->
+				<div class="f-wrap" id='ios_nosafari' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="not-support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+											<g id="Group-7" transform="translate(29.000000, 758.000000)">
+												<g id="warning" transform="translate(2.000000, 0.000000)">
+													<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+													<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+													<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i> not supported</i>
+								<p>
+									To use <u>roundee.io</u> please open this page with Safari.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="not-support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+										<g id="Group-7" transform="translate(29.000000, 758.000000)">
+											<g id="warning" transform="translate(2.000000, 0.000000)">
+												<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+												<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+												<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>not supported</i>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="f-wrap" id='ios_safari' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29px" height="29px" viewBox="0 0 29 29" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<g id="waiting-page-mobile-(1)" transform="translate(-28.000000, -657.000000)" stroke="#01BCB6" stroke-width="2.5">
+											<g id="Group-5" transform="translate(29.000000, 659.000000)">
+												<g id="Group-6">
+													<g id="check" transform="translate(1.000000, 0.000000)">
+														<polyline id="Stroke-1" points="4.16666667 12.8557631 9.39454475 17.5 20 8.33333333"/>
+														<path d="M25,12.5 C25,19.4038462 19.4038462,25 12.5,25 C5.59615385,25 0,19.4038462 0,12.5 C0,5.59615385 5.59615385,0 12.5,0 C19.4038462,0 25,5.59615385 25,12.5 Z" id="Stroke-2"/>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i>supported</i>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="not-support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+										<g id="Group-7" transform="translate(29.000000, 758.000000)">
+											<g id="warning" transform="translate(2.000000, 0.000000)">
+												<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+												<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+												<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>not supported (view only)</i>
+							<p>
+								To use <u>roundee.io</u> screen share feature, please use a desktop device.<br>
+								You will still be able to view someone else screen share.
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Mobile Android  -->
+
+				<div class="f-wrap" id='andriod_chrome' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29px" height="29px" viewBox="0 0 29 29" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+										<g id="waiting-page-mobile-(1)" transform="translate(-28.000000, -657.000000)" stroke="#01BCB6" stroke-width="2.5">
+											<g id="Group-5" transform="translate(29.000000, 659.000000)">
+												<g id="Group-6">
+													<g id="check" transform="translate(1.000000, 0.000000)">
+														<polyline id="Stroke-1" points="4.16666667 12.8557631 9.39454475 17.5 20 8.33333333"/>
+														<path d="M25,12.5 C25,19.4038462 19.4038462,25 12.5,25 C5.59615385,25 0,19.4038462 0,12.5 C0,5.59615385 5.59615385,0 12.5,0 C19.4038462,0 25,5.59615385 25,12.5 Z" id="Stroke-2"/>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i>supported</i>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="not-support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+										<g id="Group-7" transform="translate(29.000000, 758.000000)">
+											<g id="warning" transform="translate(2.000000, 0.000000)">
+												<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+												<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+												<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>not supported (view only)</i>
+							<p>
+								To use <u>roundee.io</u> screen share feature, please use a desktop device.<br>
+								You will still be able to view someone else screen share.
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="f-wrap" id='andriod_nochrome' style='display:none'>
+					<div class="system-requirement-block left">
+						<div>
+							<div class="not-support">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+									<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+										<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+											<g id="Group-7" transform="translate(29.000000, 758.000000)">
+												<g id="warning" transform="translate(2.000000, 0.000000)">
+													<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+													<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+													<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+												</g>
+											</g>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="txt">
+								My Web browser: <i> not supported</i>
+								<p>
+									To use <u>roundee.io</u> please open this page with Chrome.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="system-requirement-block right">
+						<div class="not-support">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="25px" viewBox="0 0 30 25" version="1.1">
+								<g id="Conference" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+									<g id="waiting-page-mobile-(1)" transform="translate(-30.000000, -758.000000)" fill="#ED3C61" fill-rule="nonzero" stroke="#ED3C61" stroke-width="0.4">
+										<g id="Group-7" transform="translate(29.000000, 758.000000)">
+											<g id="warning" transform="translate(2.000000, 0.000000)">
+												<ellipse id="Oval" cx="14.2990802" cy="18.9266667" rx="1.32215527" ry="1.30261603"/>
+												<path d="M14.1214338,15.5463924 C14.5233224,15.5463924 14.8494928,15.2250422 14.8494928,14.8290928 L14.8494928,8.01474684 C14.8494928,7.61879747 14.5233224,7.29744726 14.1214338,7.29744726 C13.7195451,7.29744726 13.3933747,7.61879747 13.3933747,8.01474684 L13.3933747,14.8290928 C13.3933747,15.2250422 13.7195451,15.5463924 14.1214338,15.5463924 Z" id="Shape"/>
+												<path d="M16.9528555,2.34628692 L16.9197288,2.2957173 C16.2455461,1.2721308 15.5487936,0.213396624 14.2990802,0.213396624 C12.9965825,0.213396624 12.3151192,1.28719409 11.6562257,2.32620253 C11.6529495,2.33122363 11.6325638,2.36350211 11.6292876,2.36888186 L0.101200211,21.6143882 C0.0349468354,21.7248523 0,21.7825949 0,21.9106329 C0,23.3079325 1.14123259,24.3759916 2.5438384,24.3759916 L26.054686,24.3759916 C27.4576558,24.3759916 28.5985244,23.3075738 28.5985244,21.9106329 C28.5985244,21.7825949 28.5635775,21.6904219 28.4976882,21.5803165 L16.9528555,2.34628692 Z M26.054686,22.9413924 L2.5438384,22.9413924 C2.01199124,22.9413924 1.55477015,22.6003165 1.46995127,22.0827848 L12.8910139,3.05246835 C13.4567158,2.16050633 13.8272979,1.63113924 14.2990802,1.63113924 C14.7581214,1.63113924 15.1935007,2.30181435 15.6980457,3.0678903 L27.1282091,22.0788397 C27.0437542,22.5960127 26.5865331,22.9413924 26.054686,22.9413924 Z" id="Shape"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</svg>
+						</div>
+						<div class="txt">
+							My Screen-Share: <i>not supported</i>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+	</main>
+	<!-- footer -->
+	<footer id="footer"></footer>
+	<!-- footer:end -->
+
+    <script src="https://roundee.io/assets/js/jquery/jquery.min.js"></script>
+    <script src="https://roundee.io/assets/js/moment.min.js"></script>
+    <script src="https://roundee.io/assets/js/moment.min.js"></script>
+    <script src="https://roundee.io/assets/js/moment-timezone.js"></script>
+    <script src="https://roundee.io/assets/js/moment-timezone-with-data.js"></script>
+    <script src="https://roundee.io/assets/js/jstz.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+
+
+      var ismobiletype = false;
+      var devicetype  = 'pc';
+      var userAgent = navigator.userAgent;
+
+      if(userAgent.match(/Mobile|Windows Phone|Lumia|Android|webOS|iPhone|iPod|Blackberry|PlayBook|BB10|Opera Mini|\bCrMo\/|Opera Mobi/i) ){
+          ismobiletype = true;
+          if(userAgent.match(/iPhone|iPod/i)){
+                devicetype = 'iphone';
+          }
+          else{
+                devicetype = 'android';
+          }
+      }
+
+      //var url = window.location.origin + window.location.pathname;
+      var url = window.location.href;
+
+      if(navigator.userAgent.indexOf("Edge") !== -1){
+          window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+      }
+
+      if(!!window.MSInputMethodContext && !!document.documentMode) {  //IE 11
+          window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+      }
+
+
+      if(devicetype=='iphone') {
+        if(navigator.userAgent.match('CriOS') || navigator.userAgent.match('FxiOS')) {
+            window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+        } else {
+            document.getElementById('ios_safari').style.display= '';
+        }
+      } else if(devicetype=='android') {
+        if(userAgent.indexOf('Chrome') != -1) {
+          if(userAgent.indexOf('OPR') != -1) {
+              window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+          }
+        }
+        else if(userAgent.indexOf('OPR') != -1) {
+            window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+        } else {
+            window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+        }
+    }
+
+
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            var resp = xmlhttp.response;
+              //console.log(resp);
+              try {
+
+                var data = JSON.parse(resp);
+
+                if(data.state=='end') {
+                  window.location.replace("/meeting-canceled");
+                  return;
+                }
+
+				document.getElementById("bodywaiting").style.display = "block";
+
+                $("#conf_title").text(data.name);
+                $("#duration").text(data.duration);
+
+                $("#days").text(data.days);
+                $("#hours").text(data.hours);
+                $("#mins").text(data.minutes);
+                $("#milsec").text(parseInt(data.seconds, 10));
+
+
+                var starttime= data.selected_time;
+                var st_count = starttime.indexOf('T')+1;
+                var weekName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var monthName = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var dt = new Date(starttime.substring(0,st_count-1));
+
+                var returnvalue = moment(starttime).format('dddd')+", "+moment(starttime).format('MMMM') +" "+moment(starttime).format('DD') + " " + moment(starttime).format('YYYY');
+                $("#start_dt").text(returnvalue);
+                var conf_t = starttime.substring(st_count,st_count +5);
+                var am_pm = moment(starttime).format('A');
+
+                $("#start_time").text(starttime.substring(st_count,st_count +5) +' ' + am_pm  + ' (' + data.time_zone +')');
+
+              }
+              catch(err) {
+                  document.getElementById("bodywaiting").style.display = "none";
+                  window.location.replace("https://roundee.io/openvc/video-call/" + getQueryString('room_id'));
+              }
+
+          } else if (xmlhttp.status == 400) {
+             console.log('conference id not exists: 400 error code');
+          } else {
+            console.log('conference id not exists: not done');
+            }
+        }
+      };
+
+      xmlhttp.open("POST", "https://roundee.io/landing/checkschedule", true);
+      xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xmlhttp.send('room_id=' + getQueryString('room_id') + '&owner=' +  getQueryString('id'));
+
+
+      if(!ismobiletype){
+        // pc checking
+        if(userAgent.indexOf("Opera") !== -1 || userAgent.indexOf("OPR") !== -1){
+              document.getElementById('pc_all').style.display= 'flex';
+          }
+          else if (userAgent.indexOf("Firefox") !== -1){
+              document.getElementById('pc_all').style.display= 'flex';
+          }
+          else if (userAgent.indexOf("Chrome") !== -1){
+              document.getElementById('pc_all').style.display= 'flex';
+              if(userAgent.indexOf("Edge") !== -1){
+                  document.getElementById('pc_all').style.display= 'none';
+                  document.getElementById('pc_ie').style.display= 'flex';
+              }
+          }
+          else if(userAgent.indexOf("Safari") !== -1){
+            document.getElementById('pc_safari').style.display= 'flex';
+          }
+
+          if(!!window.MSInputMethodContext && !!document.documentMode) {  //IE 11
+              //document.getElementById('pc_ie').style.display= 'flex';
+              window.location.replace("https://roundee.io/browser-not-supported?urlkey=" + url);
+          }
+
+
+
+
+      } else {
+        // mobile checking
+
+        if(devicetype=='iphone') {
+          if(navigator.userAgent.match('CriOS') || navigator.userAgent.match('FxiOS')) {
+              document.getElementById('ios_nosafari').style.display= '';
+          } else {
+              document.getElementById('ios_safari').style.display= '';
+          }
+        } else if(devicetype=='android') {
+
+          if(userAgent.indexOf('Chrome') !== -1) {
+              document.getElementById('andriod_chrome').style.display= 'block';
+              //alert(userAgent);
+              //document.getElementById('andriod_nochrome').style.display= 'block';
+          }
+          else if(userAgent.indexOf('OPR') !== -1) {
+              document.getElementById('andriod_nochrome').style.display= 'block';
+              alert(userAgent);
+          } else {
+              //alert(userAgent);
+              document.getElementById('andriod_chrome').style.display= 'block';
+          }
+      }
+    }
+
+    setInterval(minchecking, 1000);
+    setInterval(check_schedule_foredit, 30000);  //every 30 seconds
+
+    });
+
+    function minchecking() {
+      if(document.getElementById('milsec').innerHTML <= 0) {
+        var conf_days = $("#days").text();
+        var conf_hour = $("#hours").text()
+        var conf_min  = $("#mins").text();
+        var conf_milsec = $("#milsec").text();
+
+        if(parseInt(conf_min,10)<=15 && parseInt(conf_hour,10)==0 && parseInt(conf_days,10)==0 && parseInt(conf_milsec,10)==0) {
+            window.location.replace("https://roundee.io/openvc/video-call/" + getQueryString('room_id'));
+            return;
+        }
+
+        check_schedule_foredit();
+
+      } else {
+        document.getElementById('milsec').innerHTML= document.getElementById('milsec').innerHTML -1;
+      }
+    }
+
+    function check_schedule_foredit() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            var resp = xmlhttp.response;
+
+              var conf_days = $("#days").text();
+              var conf_hour = $("#hours").text()
+              var conf_min  = $("#mins").text();
+              var conf_milsec = $("#milsec").text();
+
+              if(parseInt(conf_min,10)<=15 && parseInt(conf_hour,10)==0 && parseInt(conf_days,10)==0 && parseInt(conf_milsec,10)==0) {
+                  window.location.replace("https://roundee.io/openvc/video-call/" + getQueryString('room_id'));
+                  return;
+              }
+
+              var data = JSON.parse(resp);
+              if(data.state=='end') {
+                window.location.replace("https://roundee.io/room_no_exist.html");
+                return;
+              }
+
+              $("#conf_title").text(data.name);
+              $("#duration").text(data.duration);
+
+              $("#days").text(data.days);
+              $("#hours").text(data.hours);
+              $("#mins").text(data.minutes);
+              $("#milsec").text(parseInt(data.seconds, 10));
+
+              var starttime= data.selected_time;
+              var st_count = starttime.indexOf('T')+1;
+
+              var weekName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+              var monthName = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+              var dt = new Date(starttime.substring(0,st_count-1));
+
+              var returnvalue = moment(starttime).format('dddd')+", "+moment(starttime).format('MMMM') +" "+moment(starttime).format('DD') + " " + moment(starttime).format('YYYY');
+
+              $("#start_dt").text(returnvalue);
+
+              var conf_t = starttime.substring(st_count,st_count +5);
+
+              var am_pm = moment(starttime).format('A');
+
+              $("#start_time").text(starttime.substring(st_count,st_count +5) +' ' + am_pm + ' (' + data.time_zone +')');
+
+          } else if (xmlhttp.status == 400) {
+
+             console.log('conference id not exists: 400');
+             window.location.replace("https://roundee.io/room_no_exist.html");
+
+          } else {
+            console.log('conference id not exists: not done');
+            window.location.replace("https://roundee.io/room_no_exist.html");
+            }
+        }
+      };
+
+      xmlhttp.open("POST", "https://roundee.io/landing/checkschedule", true);
+      xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xmlhttp.send('room_id=' + getQueryString('room_id') + '&owner=' +  getQueryString('id'));
+    }
+
+    </script>
+
+
+    <!-- <script type="text/javascript" src="https://roundee.io/assets/js/scripts.js"></script> -->
+</body>
+</html>

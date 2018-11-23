@@ -1,0 +1,51 @@
+<!-- 현재 문서나 관련된 문서의 내비게이션 링크를 지정 -->
+<script>
+	$(document).ready(function(){
+			var url = window.location.toString().toLowerCase();
+			if(url.indexOf('/pricing') >= 0) {
+					$('.navList li').removeClass('current');
+					$('#pricing , #pricing_mob').addClass('current');
+			} else if(url.indexOf('/slack-integration') >= 0) {
+					$('.navList li').removeClass('current');
+					$('#slack-integration, #slack-integration_mob').addClass('current');
+			} else if(url.indexOf('/schedule-a-meeting') >= 0 || url.indexOf('/conference-call-created') >= 0 || url.indexOf('/cancel-meeting') >= 0 || url.indexOf('/edit-meeting') >=0 || url.indexOf('/waiting-page') >=0) {
+					$('.navList li').removeClass('current');
+					$('#schedule-a-meeting, #schedule-a-meeting_mob').addClass('current');
+			} else if(url.indexOf('/faq') >= 0) {
+					$('.navList li').removeClass('current');
+					$('#faq, #faq_mob').addClass('current');
+			} else if(url.indexOf('/blog') >= 0) {
+					$('.navList li').removeClass('current');
+					$('#blog, #blog_mob').addClass('current');
+			} else if(url.indexOf('/terms-of-use') >= 0) {
+				$('.navList li').removeClass('current');
+			} else if(url.indexOf('/privacy-policy') >= 0) {
+				$('.navList li').removeClass('current');
+			}
+	});
+</script>
+
+<nav id="lnb" role="navigation">
+	<div class="logo"><a href="/"><img src="/asset_new/img/landing/logo.svg" alt="roundee.io"></a></div>
+	<ul class="navList">
+		<li class="current"><a href="/">Home</a></li>
+		<li id='schedule-a-meeting'><a href="/schedule-a-meeting">Schedule a Meeting</a></li>
+		<li id='pricing'><a href="/pricing">Pricing</a></li>
+		<li id='slack-integration'><a href="/slack-integration">Slack integration</a></li>
+		<li id='blog'><a href="https://roundee.io/blog/">Blog</a></li>
+		<li id='faq'><a href="/faq">FAQ</a></li>
+	</ul>
+	<button id="navi_menu_open" onclick="fnToggleMenu();"><img src="/asset_new/img/landing/menu_btn.svg" alt="all menu"></button>
+</nav>
+<nav id="m_lnb" role="navigation">
+	<div class="logo"><a href="/"><img src="/asset_new/img/landing/logo.svg" alt="roundee.io"></a></div>
+	<ul class="navList">
+		<li class="current"><a href="/">Home</a></li>
+		<li id='schedule-a-meeting_mob'><a href="/schedule-a-meeting">Schedule a meeting</a></li>
+		<li id='pricing_mob'><a href="/pricing">Pricing</a></li>
+		<li id='slack-integration_mob'><a href="/slack-integration">Slack integration</a></li>
+		<li id='blog_mob'><a href="https://roundee.io/blog/">Blog</a></li>
+		<li id='faq_mob'><a href="/faq">FAQ</a></li>
+	</ul>
+	<button id="navi_menu_close" onclick="fnToggleMenu()"><img src="/asset_new/img/landing/menu_close.svg" alt="all menu"></button>
+</nav>
